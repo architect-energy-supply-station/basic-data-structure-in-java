@@ -211,6 +211,11 @@ public class InterchangeBetween2DArrayAndSparseArray {
         return sparseArray;
     }
 
+    /**
+     * 将稀疏数组转为二维数组
+     * @param sparseArray 需要转换的稀疏数组
+     * @param restoredFromSparseArray 目标对象，要恢复成的二维数组
+     */
     private static void revertToATwoDimensionalArray(int[][] sparseArray, int[][] restoredFromSparseArray) {
         for (int i = 1; i < sparseArray.length; i++) {
             int row_of_orign_array = sparseArray[i][0];
@@ -220,6 +225,11 @@ public class InterchangeBetween2DArrayAndSparseArray {
         }
     }
 
+    /**
+     * 将二维数组转为稀疏数组
+     * @param checkerboard 源对象，用二维数组表示的棋盘
+     * @param sparseArray 目标对象，一个稀疏数组
+     */
     private static void sparseToArray(int[][] checkerboard, int[][] sparseArray) {
         int count=0;
         for (int i = 0; i < checkerboard.length; i++) {
@@ -234,6 +244,11 @@ public class InterchangeBetween2DArrayAndSparseArray {
         }
     }
 
+    /**
+     * 获取原数组的有效存储数据的个数
+     * @param checkerboard 用二维数组表示的棋盘
+     * @return 原数组的有效存储数据的个数
+     */
     private static int getSum(int[][] checkerboard) {
         int sum =0;
         for (int i = 0; i < checkerboard.length; i++) {
@@ -246,6 +261,10 @@ public class InterchangeBetween2DArrayAndSparseArray {
         return sum;
     }
 
+    /**
+     * 打印数组对象
+     * @param checkerboard 传入的任意二维数组对象
+     */
     private static void printArray(int[][] checkerboard) {
         for (int[] rowData : checkerboard) {
             for (int data : rowData) {
