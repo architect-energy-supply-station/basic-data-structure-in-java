@@ -30,6 +30,9 @@ public class ArrayApp {
         arr[9]=99;
         lengthOfArray=10;
         //display items
+
+
+
         for (j = 0;  j< lengthOfArray; j++) {
             System.out.println("arr item [" + j + "] =" + arr[j]+",");
         }
