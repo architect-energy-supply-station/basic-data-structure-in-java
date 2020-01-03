@@ -46,7 +46,7 @@ public class TwoDimensionalArraySparseArrayConversion {
         int[][] sparseArray = getInts(twoDimensionalArr, sum);
 
 
-//        2、遍历原始数组，获取数据，并赋值给稀疏数组进行存储
+//        2. 遍历原始数组，获取数据，并将其分配给稀疏数组进行存储
         _2dArrayToSparseArray(twoDimensionalArr, sparseArray);
 //        3、打印稀疏数组的内容
         System.out.println("contents_of_a_sparse_array");
