@@ -105,7 +105,7 @@ public class InterchangeBetween2DArrayAndSparseArray {
 
 
     /**
-     * 获取全部行数（含空行）
+     * 获取全部行数（含空行）参考：https://www.cnblogs.com/hujunzheng/p/4072518.html
      * @return
      * @throws IOException
      */
@@ -123,7 +123,7 @@ public class InterchangeBetween2DArrayAndSparseArray {
     }
 
     /**
-     * 获取文件中有效内容的行数（不含空行）
+     * 获取文件中有效内容的行数（不含空行），参考文章：https://blog.csdn.net/qq_40298231/article/details/99680229
      * @return
      * @throws IOException
      */
