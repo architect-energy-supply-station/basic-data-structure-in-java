@@ -1,5 +1,7 @@
 package array.datastructure;
 
+import java.util.Arrays;
+
 /**
  * @description：
  * @author：by Administrator
@@ -29,6 +31,25 @@ public class HighArrayApp {
 
         array.delete(22);
         array.delete(8);
+        System.out.println();
+        System.out.printf("数组中最大的元素的值为：%d", array.getMax());
+        System.out.println();
+        System.out.printf("数组中最小的元素的值为：%d", array.getMin());
+        System.out.println();
+        array.removeMax();
         array.display();
+
+    //    实现倒序排序，要求不能修改原有的类
+        long [] reversedArray = new long[20];
+        for (int i = 0; i < reversedArray.length; i++) {
+            long removedFromOriginArray = array.removeMax();
+            if (removedFromOriginArray == -1) {
+                reversedArray[i] = 0;
+            } else {
+                reversedArray[i] = removedFromOriginArray;
+            }
+        }
+        System.out.println();
+        System.out.println(Arrays.toString(reversedArray));
     }
 }
