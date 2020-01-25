@@ -10,6 +10,11 @@ import java.util.Arrays;
  */
 public class HighArray {
     private long[] array;
+
+    public int geteElement() {
+        return eElement;
+    }
+
     private int eElement;
 
     public HighArray(int maxSize) {
