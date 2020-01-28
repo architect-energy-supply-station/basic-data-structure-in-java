@@ -7,12 +7,12 @@ import java.util.Arrays;
  * @author：by Administrator
  * @date：2020/1/15
  */
-public class OrderArrayWithMerge {
+public class OrderArray {
     private long[] array;
     private int eElement;
 
 
-    public OrderArrayWithMerge(int maxSize) {
+    public OrderArray(int maxSize) {
         this.array = new long[maxSize];
         this.eElement = 0;
     }

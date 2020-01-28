@@ -42,8 +42,8 @@ class HighArrayTest {
 
     @Test
     void removeMax() {
-        assertEquals(99, array.removeMax(), "实际值");
-        assertEquals(22, array.removeMax(), "实际值不符合");
+        assertEquals(99, array.removeMax());
+        assertEquals(28, array.removeMax());
     }
 
     @Test
@@ -61,8 +61,8 @@ class HighArrayTest {
 
     @Test
     void find() {
-        assertEquals(2, array.find(22), "没有啥");
-        assertEquals(-1, array.find(-1), "没有啥");
+        assertEquals(2, array.find(22));
+        assertEquals(-1, array.find(-1));
     }
 
 }

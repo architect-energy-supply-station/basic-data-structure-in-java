@@ -1,4 +1,4 @@
-package com.dynamic.bill4j.array;
+package com.dynamic.bill4j.array.datastructure;
 
 /**
  * @author bill-smith liuwb

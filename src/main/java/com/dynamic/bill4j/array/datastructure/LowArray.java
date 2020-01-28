@@ -44,7 +44,7 @@ public class LowArray {
 
     public void remove(int item) {
         find(item);
-        for (int k = indexOfForLoop; k < eElement ; k++) {
+        for (int k = 0; k < eElement ; k++) {
             // assert k+1 < eElement;
             if (k + 1 == eElement) {
                 this.arr[k] = 0;

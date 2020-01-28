@@ -1,13 +1,13 @@
-package com.dynamic.bill4j.array.datastructure;
+package com.dynamic.bill4j.array.datastructure.refactor;
 
 /**
  * @description：
  * @author：by Administrator
  * @date：2020/1/15
  */
-public class OrderArrayApp {
+public class RefactoryOrderArrayApp {
     public static void main(String[] args) {
-        OrderArray array = new OrderArray(20);
+        RefactoringOrderArray array = new RefactoringOrderArray(20);
         array.insert(2);
         array.insert(12);
         array.insert(22);
@@ -22,7 +22,7 @@ public class OrderArrayApp {
         array.insert(100,array.getInsertIndexByBinary(100));
         array.display();
         int searchKey = 6;
-        int result =array.find(searchKey);
+        int result =array.indexOf(searchKey);
         if (result == -1) {
             System.out.printf("没有找到元素 %d ", searchKey);
 
@@ -30,8 +30,11 @@ public class OrderArrayApp {
             System.out.printf("元素 %d 的位置为 %d  ", searchKey,result);
         }
 
-        array.delete(22);
-        array.delete(8);
+        // array.delete(22);
+        array.removeElement(22);
+        array.removeElement(8);
+        array.remove(2);
+        // array.delete(8);
         array.display();
         System.out.printf("该数组中的最大值为： %d ",array.getMax());
         System.out.println();

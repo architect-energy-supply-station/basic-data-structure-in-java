@@ -7,9 +7,9 @@ import java.util.Arrays;
  * @author：by Administrator
  * @date：2020/1/15
  */
-public class OrderArrayWIthMergeApp {
+public class OrderWIthMergedArrayApp {
     public static void main(String[] args) {
-        OrderWithMergeArray array = new OrderWithMergeArray(20);
+        OrderWithMergedArray array = new OrderWithMergedArray(20);
         array.insert(2);
         array.insert(12);
         array.insert(22);
@@ -26,7 +26,7 @@ public class OrderArrayWIthMergeApp {
         int[] array1 = new int[]{1,22,33,44};
         int[] array0;
         int[] array2=new int[]{1,25,31};
-        array0 = OrderWithMergeArray.addAllOrdered(array1, array2);
+        array0 = OrderWithMergedArray.addAllOrdered(array1, array2);
         System.out.println(Arrays.toString(array0));
 
     }
