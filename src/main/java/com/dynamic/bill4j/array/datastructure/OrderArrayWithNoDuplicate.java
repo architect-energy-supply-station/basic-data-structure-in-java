@@ -157,6 +157,7 @@ public class OrderArrayWithNoDuplicate {
      * @return
      */
     public Set getDuplicatedItemIndexes() {
+        //TODO: need to refactoring ,using array instead of using set. 参考Apache和jdk的去重、删除算法 -- Bill-liu BuiltIn 2020/2/7 22:48
         Set duplicatedItemIndexes = new HashSet();
 
         for (int i = 0; i < this.eElement; i++) {

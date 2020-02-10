@@ -18,9 +18,11 @@ public class OrderArray {
     }
 
     /**
-     * 查找数组中是否包含某元素
+     * findIfAnArrayContainsAnElement
+     *
+     *
      * @param searchKey 需要查找的关键字
-     * @return 返回-1：表示没有找到，否则返回该元素在数组中的下标
+     * @return 返回-1：Indicates that it was not found, otherwise returns the index of the element in the array.
      */
     public int find(long searchKey) {
         int upperBound=this.eElement-1;

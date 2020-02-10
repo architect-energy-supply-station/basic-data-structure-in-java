@@ -31,15 +31,16 @@ public class RefactoryOrderArrayApp {
         }
 
         // array.delete(22);
-        array.removeElement(22);
-        array.removeElement(8);
+        // array.removeElement(22);
+        // array.removeElement(8);
+        array.removeElements(22, 8,2);
         array.remove(2);
         // array.delete(8);
         array.display();
         System.out.printf("该数组中的最大值为： %d ",array.getMax());
         System.out.println();
         System.out.printf("该数组中的最小值为： %d ",array.getMin());
-        array.removeMax();
+        array.removeMaxAndGet();
         array.display();
     }
 }

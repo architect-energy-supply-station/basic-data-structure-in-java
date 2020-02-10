@@ -26,7 +26,6 @@ public class OrderWithMergedArray {
      * @param array2 the second com.dynamic.bill4j.array whose elements are added to the new com.dynamic.bill4j.array.
      * @return The new int[] com.dynamic.bill4j.array.
      */
-    //todo 不能使用可变参数？很奇怪！！！
     public static int[] addAll(final int[] array1, final int... array2) {
         int maxSize = array1.length + array2.length;
         int[] mergedArray = new int[maxSize];
