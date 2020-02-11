@@ -12,20 +12,5 @@ package com.dynamic.bill4j.array.queue;
  */
 public class TestQueue {
     public static void main(String[] args) {
-        ArrayQueue arrayQueue = new ArrayQueue(20);
-//        type[] variableName = new type[value];
-        ArrayQueue[] arrayQueues = new ArrayQueue[3];
-        int[] arr = new int[3];
-
-        arrayQueue.push(1);
-        arrayQueue.push(2);
-        arrayQueue.push(3);
-        arrayQueue.push(22);
-        arrayQueue.push(11);
-        arrayQueue.push(33);
-        arrayQueue.show();
-        System.out.println(arrayQueue.pop());
-        System.out.println(arrayQueue.pop());
-        arrayQueue.show();
     }
 }

@@ -12,42 +12,45 @@ import java.util.Arrays;
  * @Contract https://github.com/BillCindy
  * @Blog https://blog.csdn.net/t131452n?viewmode=contents
  */
-public class ArrayQueue {
+public class ArrayCircularQueue {
 
     public static final int EMPTY_QUEUE = -1;
+    //用来表示队列的第一个元素，初始值为0
     private int front;
+    //用来表示队列的最后一个元素的后一个位置，留出一个空间
     private int rear;
+    //最大值（因为有一个空间预留，故有效值的最大个数应该是maxsize-1
     private int maxSize;
     private int size;
 
     public int getSize() {
-        return size = this.rear - this.front;
+        return size = (this.rear + maxSize - this.front) % maxSize;
     }
 
-    private int[] Queue;
+    private int[] queue;
 
-    public ArrayQueue( int maxSize) {
-        this.front = front-1;
-        this.rear = rear-1;
+    public ArrayCircularQueue(int maxSize) {
+        this.front = 0;
+        this.rear = 0;
         this.size = 0;
         this.maxSize = maxSize;
-        this.Queue = new int[maxSize];
+        this.queue = new int[maxSize];
     }
 
     /**
-     * 首位相接时，表示队列已空。可能均为-1，也可能均为非负值
+     * 首位相接时，表示队列已空。可能均为0，也可能均为最大值
      * @return true表示空，false表示非空
      */
     public boolean isEmpty() {
-        return this.front == this.rear;
+        return this.rear == this.front;
     }
 
     /**
-     * 尾部指针等于最大值的时候，表示队列已满
+     * 尾部的后一个位置再加一，取模后等于队首，表示队列已满
      * @return true 表示队列满，false表示未满
      */
     public boolean isFull() {
-        return this.rear == this.maxSize -1;
+        return (this.rear + 1) % maxSize == this.front;
     }
 
     /**
@@ -60,9 +63,9 @@ public class ArrayQueue {
         if (this.isFull()) {
             throw new QueueFullException("队列已满！无法继续添加");
         }
-
-        rear++;
-        this.Queue[rear]=item;
+        //需要取模，因为是环形的，位置是变化的，如果一直加，会出现数组越界
+        this.queue[rear]=item;
+        this.rear=(this.rear + 1) % maxSize;
     }
 
     /**
@@ -74,8 +77,9 @@ public class ArrayQueue {
             System.out.println("队列已空");
             throw new QueueEmptyException("队列已空");
         }
-        front++;
-        return this.Queue[front];
+        int result = this.queue[front];
+        this.front = (this.front + 1) % maxSize;
+        return result;
 //
     }
 
@@ -86,6 +90,6 @@ public class ArrayQueue {
         // if (isEmpty()) {
         //     throw new RuntimeException("队列已空");
         // }
-            System.out.println(Arrays.toString(this.Queue));
+            System.out.println(Arrays.toString(this.queue));
     }
 }
