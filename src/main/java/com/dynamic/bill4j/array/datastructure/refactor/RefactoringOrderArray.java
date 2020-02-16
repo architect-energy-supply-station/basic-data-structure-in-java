@@ -1,11 +1,10 @@
 package com.dynamic.bill4j.array.datastructure.refactor;
 
-import org.apache.commons.lang3.mutable.MutableLong;
-
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.BitSet;
 import java.util.HashMap;
+import java.util.concurrent.atomic.LongAdder;
 
 
 /**
@@ -379,12 +378,14 @@ public class RefactoringOrderArray {
         if (isEmpty(array) || isEmpty(values)) {
             return array.clone();
         }
-        HashMap<Long, MutableLong> occurrences = new HashMap<Long, MutableLong>();
+        HashMap<Long, LongAdder> occurrences = new HashMap<Long, LongAdder>();
         for (long value : values) {
             Long boxed = Long.valueOf(value);
-            MutableLong count = occurrences.get(boxed);
+            LongAdder count = occurrences.get(boxed);
             if (count == null) {
-                occurrences.put(boxed, new MutableLong(1));
+                LongAdder longAdder = new LongAdder();
+                longAdder.increment();
+                occurrences.put(boxed, longAdder);
             } else {
                 count.increment();
             }
@@ -394,9 +395,10 @@ public class RefactoringOrderArray {
         for (int i = 0; i < array.length; i++) {
             long key = array[i];
             //TODO:final 关键字的区别 -- Bill-liu BuiltIn 2020/2/10 10:52
-            MutableLong count = occurrences.get(key);
+            LongAdder count = occurrences.get(key);
             if (count != null) {
-                if (count.decrementAndGet() == 0) {
+                count.decrement();
+                if ((count.longValue()) == 0) {
                     occurrences.remove(key);
                 }
                 toRemove.set(i);
@@ -570,12 +572,12 @@ public class RefactoringOrderArray {
         // Arrays.sort(indices);
         System.out.println(Arrays.toString(indices));
         int[] toRemove = (int[]) Array.newInstance(indices.getClass().getComponentType(), count - 1);
-        System.out.println(Arrays.toString(toRemove));
-        System.out.println("去重后的数组,保留第一个元素");
+        // System.out.println(Arrays.toString(toRemove));
+        // System.out.println("去重后的数组,保留第一个元素");
         System.arraycopy(indices, 1, toRemove, 0, count - 1);
-        System.out.println("将要移除的元素索引值");
-        System.out.println(Arrays.toString(toRemove));
-        System.out.println("去重后的数组");
+        // System.out.println("将要移除的元素索引值");
+        // System.out.println(Arrays.toString(toRemove));
+        // System.out.println("去重后的数组");
         System.out.println(Arrays.toString(removeAllAndGet(toRemove)));
 
         //    调用removeAllAndGet方法，进行批量移除
