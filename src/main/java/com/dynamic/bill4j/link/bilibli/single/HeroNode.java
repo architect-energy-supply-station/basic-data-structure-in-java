@@ -9,6 +9,19 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 public class HeroNode {
     private int no;
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     private String name;
     private String nickName;
 

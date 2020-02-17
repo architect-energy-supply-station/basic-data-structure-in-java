@@ -7,18 +7,19 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SingleLinkedListTest {
-SingleLinkedList2 singleLinkedList;
-    HeroNode2 node1;
-    HeroNode2 node2;
-    HeroNode2 node3;
-    HeroNode2 node4;
+    SingleLinkedList singleLinkedList;
+    HeroNode node1;
+    HeroNode node2;
+    HeroNode node3;
+    HeroNode node4;
+
     @BeforeEach
     void setUp() {
-        singleLinkedList = new SingleLinkedList2();
-         node1 = new HeroNode2(1, "bill", "bb");
-         node2 = new HeroNode2(2, "cindy", "cc");
-         node3 = new HeroNode2(3, "angle", "aa");
-         node4 = new HeroNode2(4, "alice", "yu");
+        singleLinkedList = new SingleLinkedList();
+        node1 = new HeroNode(1, "bill", "bb");
+        node2 = new HeroNode(2, "cindy", "cc");
+        node3 = new HeroNode(3, "angle", "aa");
+        node4 = new HeroNode(4, "alice", "yu");
     }
 
 
@@ -51,5 +52,57 @@ SingleLinkedList2 singleLinkedList;
         singleLinkedList.addInOrder(node3);
         assertEquals(4, singleLinkedList.getCount());
         singleLinkedList.display();
+    }
+
+    @Test
+    void remove() {
+        assertEquals(0, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.addInOrder(node2);
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node1);
+        assertEquals(2, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node4);
+        assertEquals(3, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node3);
+        assertEquals(4, singleLinkedList.getCount());
+        singleLinkedList.display();
+
+        singleLinkedList.remove(2);
+        assertEquals(3, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.remove(4);
+        assertEquals(2, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.remove(1);
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.remove(1);
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.display();
+    }
+
+    @Test
+    void update() {
+        assertEquals(0, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.addInOrder(node2);
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node1);
+        assertEquals(2, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node4);
+        assertEquals(3, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node3);
+        assertEquals(4, singleLinkedList.getCount());
+        singleLinkedList.display();
+
+        HeroNode updateNode = new HeroNode(2, "updated", "updated ~~");
+        singleLinkedList.update(updateNode);
+        singleLinkedList.display();
+
+        HeroNode updateNode2 = new HeroNode(5, "updated", "updated ~~");
+        singleLinkedList.update(updateNode2);
+        singleLinkedList.display();
+
     }
 }
