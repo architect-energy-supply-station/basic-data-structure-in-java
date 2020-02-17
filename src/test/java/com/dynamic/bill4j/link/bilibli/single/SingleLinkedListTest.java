@@ -37,4 +37,19 @@ SingleLinkedList2 singleLinkedList;
         assertEquals(4, singleLinkedList.getCount());
         singleLinkedList.display();
     }
+
+    @Test
+    void addInOrder() {
+        assertEquals(0, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.addInOrder(node2);
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node1);
+        assertEquals(2, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node4);
+        assertEquals(3, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node3);
+        assertEquals(4, singleLinkedList.getCount());
+        singleLinkedList.display();
+    }
 }

@@ -34,6 +34,31 @@ private int  count;
         count++;
     }
 
+    public void addInOrder(HeroNode2 heroNode) {
+        HeroNode2 temp = this.head;
+        boolean allowInsertion = false;
+        while (true) {
+            if (temp.getNext() == null) {
+                System.out.println("已到达链表的尾部！");
+                allowInsertion = true;
+                break;
+            } else if (temp.getNext().getNo() > heroNode.getNo()) {
+                allowInsertion = true;
+                break;
+            } else if (temp.getNext().getNo() == heroNode.getNo()) {
+                break;
+            }
+            temp = temp.getNext();
+        }
+        if (allowInsertion) {
+            //顺序很重要！先修改下游，再修改上游！
+            heroNode.setNext(temp.getNext());
+            temp.setNext(heroNode);
+            count++;
+        } else {
+            System.out.println("编号已存在，不允许插入重复编号！");
+        }
+    }
     private boolean isEmpty() {
         return this.head.getNext() == null;
     }
@@ -46,15 +71,14 @@ private int  count;
             if (temp.getNext() == null) {
                 break;
             }
-            System.out.println(temp);
             temp=temp.getNext();
+            System.out.println(temp);
         }
     }
 
     private void verifyThatTheLinkedListIsEmpty() {
         if (isEmpty()) {
             System.out.println("链表为空！");
-            throw new LinkedListEmptyException("链表为空！");
         }
     }
 

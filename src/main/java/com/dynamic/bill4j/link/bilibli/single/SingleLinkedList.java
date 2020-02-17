@@ -47,7 +47,6 @@ public class SingleLinkedList {
     public void display() {
         if (isEmpty()) {
             System.out.println("链表为空!");
-            throw new LinkedListEmptyException("链表为空!");
         }
         //输出所有除头节点之外的节点信息，需要遍历链表
         HeroNode temp = head.getNextNode();
