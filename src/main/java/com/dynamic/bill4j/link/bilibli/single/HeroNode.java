@@ -7,8 +7,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * @author：by Bill-liu
  * @date：2020/2/15
  */
-public class HeroNode {
-    private int no;
+public class HeroNode  {
+    private Integer number;
+
 
     public String getNickName() {
         return nickName;
@@ -38,21 +39,24 @@ public class HeroNode {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("no", no)
+                .append("no", number)
                 .append("name", name)
                 .append("nickName", nickName)
                 .toString();
     }
 
-    public HeroNode(int no, String name, String nickName) {
+    public HeroNode() {
+    }
 
-        this.no = no;
+    public HeroNode(Integer number, String name, String nickName) {
+
+        this.number = number;
         this.name = name;
         this.nickName = nickName;
     }
 
-    public int getNo() {
-        return no;
+    public int getNumber() {
+        return number;
     }
 
     public String getName() {

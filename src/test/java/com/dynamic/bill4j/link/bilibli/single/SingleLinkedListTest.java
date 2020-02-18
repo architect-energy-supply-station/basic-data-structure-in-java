@@ -1,10 +1,11 @@
 package com.dynamic.bill4j.link.bilibli.single;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.lang.reflect.InvocationTargetException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SingleLinkedListTest {
     SingleLinkedList singleLinkedList;
@@ -38,6 +39,31 @@ class SingleLinkedListTest {
         assertEquals(4, singleLinkedList.getCount());
         singleLinkedList.display();
     }
+    @Test
+    void addToFirstNodeAlways() throws CloneNotSupportedException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        assertEquals(0, singleLinkedList.getCount());
+
+        singleLinkedList.addToFirstNodeAlways(node1);
+        singleLinkedList.display();
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.addToFirstNodeAlways(node2);
+        assertEquals(2, singleLinkedList.getCount());
+        singleLinkedList.addToFirstNodeAlways(node3);
+        assertEquals(3, singleLinkedList.getCount());
+        singleLinkedList.addToFirstNodeAlways(node4);
+        assertEquals(4, singleLinkedList.getCount());
+        singleLinkedList.display();
+    }
+    @Test
+    void addToFirstNodeAlwaysStatic()  {
+        assertEquals(0, singleLinkedList.getCount());
+
+        SingleLinkedList.addToFirstNodeAlways(singleLinkedList,node1);
+        SingleLinkedList.addToFirstNodeAlways(singleLinkedList,node2);
+        SingleLinkedList.addToFirstNodeAlways(singleLinkedList,node3);
+        SingleLinkedList.addToFirstNodeAlways(singleLinkedList,node4);
+        singleLinkedList.display();
+    }
 
     @Test
     void addInOrder() {
@@ -51,6 +77,40 @@ class SingleLinkedListTest {
         assertEquals(3, singleLinkedList.getCount());
         singleLinkedList.addInOrder(node3);
         assertEquals(4, singleLinkedList.getCount());
+        singleLinkedList.display();
+    }
+    @Test
+    void revertSingleLinkedList() {
+        assertEquals(0, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.addInOrder(node2);
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node1);
+        assertEquals(2, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node4);
+        assertEquals(3, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node3);
+        assertEquals(4, singleLinkedList.getCount());
+        singleLinkedList.display();
+        System.out.println("转制前*************");
+        SingleLinkedList.revertSingleLinkedList(singleLinkedList);
+        singleLinkedList.display();
+    }
+    @Test
+    void revertSingleLinkedListByStack() {
+        assertEquals(0, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.addInOrder(node2);
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node1);
+        assertEquals(2, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node4);
+        assertEquals(3, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node3);
+        assertEquals(4, singleLinkedList.getCount());
+        singleLinkedList.display();
+        System.out.println("转制前*************");
+        SingleLinkedList.reverse(singleLinkedList);
         singleLinkedList.display();
     }
 
@@ -105,4 +165,68 @@ class SingleLinkedListTest {
         singleLinkedList.display();
 
     }
+
+    @Test
+    void getLength() {
+        assertEquals(0, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.addInOrder(node2);
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node1);
+        assertEquals(2, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node4);
+        assertEquals(3, singleLinkedList.getCount());
+        assertEquals(singleLinkedList.getCount(), singleLinkedList.getLength(singleLinkedList.getHead()));
+        singleLinkedList.addInOrder(node3);
+        assertEquals(4, singleLinkedList.getCount());
+        singleLinkedList.display();
+
+        assertEquals(singleLinkedList.getCount(), singleLinkedList.getLength(singleLinkedList.getHead()));
+    }
+    @Test
+    void nodeOfLastIndex() {
+        assertEquals(0, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.addInOrder(node2);
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node1);
+        assertEquals(2, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node4);
+        assertEquals(3, singleLinkedList.getCount());
+        assertEquals(singleLinkedList.getCount(), singleLinkedList.getLength(singleLinkedList.getHead()));
+        singleLinkedList.addInOrder(node3);
+        assertEquals(4, singleLinkedList.getCount());
+        singleLinkedList.display();
+
+        assertEquals(singleLinkedList.getCount(), singleLinkedList.getLength(singleLinkedList.getHead()));
+        assertEquals(node4, singleLinkedList.nodeOfLastIndex(singleLinkedList.getHead(), 0));
+        assertEquals(node3, singleLinkedList.nodeOfLastIndex(singleLinkedList.getHead(), 1));
+        assertEquals(node2, singleLinkedList.nodeOfLastIndex(singleLinkedList.getHead(), 2));
+        assertEquals(node1, singleLinkedList.nodeOfLastIndex(singleLinkedList.getHead(), 3));
+    }@Test
+    void nodeOfLastIndex2() {
+        assertEquals(0, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.addInOrder(node2);
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node1);
+        assertEquals(2, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node4);
+        assertEquals(3, singleLinkedList.getCount());
+        assertEquals(singleLinkedList.getCount(), singleLinkedList.getLength(singleLinkedList.getHead()));
+        singleLinkedList.addInOrder(node3);
+        assertEquals(4, singleLinkedList.getCount());
+        singleLinkedList.display();
+
+        assertEquals(singleLinkedList.getCount(), singleLinkedList.getLength(singleLinkedList.getHead()));
+        assertEquals(node4, singleLinkedList.nodeOfLastIndexOf2(singleLinkedList.getHead(), 0));
+        assertEquals(node3, singleLinkedList.nodeOfLastIndexOf2(
+                singleLinkedList.getHead(), 1));
+        assertEquals(node2, singleLinkedList.nodeOfLastIndexOf2(
+                singleLinkedList.getHead(), 2));
+        assertEquals(node1, singleLinkedList.nodeOfLastIndexOf2(
+                singleLinkedList.getHead(), 3));
+    }
+
+
 }
