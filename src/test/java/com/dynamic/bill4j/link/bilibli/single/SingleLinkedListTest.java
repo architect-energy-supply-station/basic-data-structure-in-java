@@ -96,6 +96,25 @@ class SingleLinkedListTest {
         SingleLinkedList.revertSingleLinkedList(singleLinkedList);
         singleLinkedList.display();
     }
+
+    @Test
+    void recursiveReversion() {
+        assertEquals(0, singleLinkedList.getCount());
+        singleLinkedList.display();
+        singleLinkedList.addInOrder(node2);
+        assertEquals(1, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node1);
+        assertEquals(2, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node4);
+        assertEquals(3, singleLinkedList.getCount());
+        singleLinkedList.addInOrder(node3);
+        assertEquals(4, singleLinkedList.getCount());
+        System.out.println("转制前*************");
+        singleLinkedList.display();
+        System.out.println("转制后*************");
+        System.out.println(SingleLinkedList.recursiveReversion(singleLinkedList.getHead()));
+        // singleLinkedList.display();
+    }
     @Test
     void revertSingleLinkedListByStack() {
         assertEquals(0, singleLinkedList.getCount());

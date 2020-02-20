@@ -184,6 +184,7 @@ public class SingleLinkedList {
         return cur;
     }
 
+    @Deprecated
     public static void  revertSingleLinkedList(@NotNull SingleLinkedList originalLinkedList) {
     //    入参校验
     verifyThatTheLinkedListIsEmpty(originalLinkedList);
@@ -209,7 +210,38 @@ public class SingleLinkedList {
         originalLinkedList.getHead().setNextNode(reverseHead.getNextNode());
     }
 
+    public static HeroNode recursiveReversion(@NotNull HeroNode head) {
+        verifyThatTheLinkedListIsEmpty(head);
+        HeroNode result = recursiveReversion(head.getNextNode());
+        //reverse
+        head.getNextNode().setNextNode(head);
+        head.setNextNode(null);
+        return result;
+    }
+    public static void  revertSingleLinkedList(@NotNull HeroNode head) {
+    //    入参校验
+    verifyThatTheLinkedListIsEmpty(head);
+    //    辅助变量
+    //    遍历原链表，取出原链表的节点，总是放入新链表的第一个节点
+        int length = getLength(head);
+        //取得当前节点，头节点后的第一个节点
+        HeroNode cur = head.getNextNode();
+        HeroNode reverseHead = new HeroNode(0,"","");
+        for (int i = 0; i < length; i++) {
+            //当前节点的下一个，取出备用
+            HeroNode next = cur.getNextNode();
+            //将当前节点的下一个节点，插入到新链表的第一个位置
+            cur.setNextNode(reverseHead.getNextNode());
+            //将当前节点，和新链表链接起来
+            reverseHead.setNextNode(cur);
+            //将节点往后移动
+            cur = next;
+        }
+        //将旧链表的头节点，指向新链表的第一个节点，完成转置
+        head.setNextNode(reverseHead.getNextNode());
+    }
 
+    @Deprecated
     public static HeroNode reverse(@NotNull SingleLinkedList singleLinkedList) {
         if (singleLinkedList == null || singleLinkedList.getHead() == null) {
             System.out.println("链表为空！");
@@ -265,6 +297,12 @@ public class SingleLinkedList {
             System.out.println("链表为空！");
         }
     }
+    private static void verifyThatTheLinkedListIsEmpty(HeroNode heroNode) {
+        if (isEmpty(heroNode)) {
+            System.out.println("链表为空！");
+        }
+    }
+    @Deprecated
     private static void verifyThatTheLinkedListIsEmpty(SingleLinkedList singleLinkedList) {
         if (isEmpty(singleLinkedList)) {
             System.out.println("链表为空！");
@@ -273,7 +311,15 @@ public class SingleLinkedList {
     private boolean isEmpty() {
         return this.head.getNextNode() == null;
     }
+
+    @Deprecated
     private static boolean isEmpty(SingleLinkedList singleLinkedList) {
+
         return singleLinkedList.getHead().getNextNode() == null;
+    }
+
+    private static boolean isEmpty(HeroNode heroNode) {
+
+        return heroNode.getNextNode() == null;
     }
 }
