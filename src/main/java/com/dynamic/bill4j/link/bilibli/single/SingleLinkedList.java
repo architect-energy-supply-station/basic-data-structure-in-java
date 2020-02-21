@@ -170,7 +170,6 @@ public class SingleLinkedList {
         }
         return temp;
     }
-
     public HeroNode nodeOfLastIndexOf2(HeroNode head, int index) {
         HeroNode cur = head;
         if (cur.getNextNode() == null) {
@@ -275,6 +274,7 @@ public class SingleLinkedList {
             throw new IndexOutOfBoundsException("length = " + length + ", index = " + index);
         }
     }
+
 
 
     public static int getLength(HeroNode head) {
