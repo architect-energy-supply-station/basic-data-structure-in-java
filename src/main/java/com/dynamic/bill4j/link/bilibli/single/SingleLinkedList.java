@@ -2,6 +2,7 @@ package com.dynamic.bill4j.link.bilibli.single;
 
 import com.sun.istack.internal.NotNull;
 
+import java.util.Stack;
 import java.util.concurrent.atomic.LongAdder;
 
 /**
@@ -201,8 +202,6 @@ public class SingleLinkedList {
             cur.setNextNode(reverseHead.getNextNode());
             //将当前节点，和新链表链接起来
             reverseHead.setNextNode(cur);
-            // result.addToFirstNodeAlways(newHeroNode);
-            // System.out.println("装到新链表中的节点newNode="+result.getHead().getNextNode());
             //将节点往后移动
             cur = next;
         }
@@ -211,7 +210,9 @@ public class SingleLinkedList {
     }
 
     public static HeroNode recursiveReversion(@NotNull HeroNode head) {
-        verifyThatTheLinkedListIsEmpty(head);
+        if (head == null || head.getNextNode() == null) {
+            return head;
+        }
         HeroNode result = recursiveReversion(head.getNextNode());
         //reverse
         head.getNextNode().setNextNode(head);
@@ -241,20 +242,32 @@ public class SingleLinkedList {
         head.setNextNode(reverseHead.getNextNode());
     }
 
-    @Deprecated
-    public static HeroNode reverse(@NotNull SingleLinkedList singleLinkedList) {
-        if (singleLinkedList == null || singleLinkedList.getHead() == null) {
-            System.out.println("链表为空！");
+    public static HeroNode reverseByStack(@NotNull HeroNode head) {
+    //    遍历原链表，依次取出结点，顺序压栈
+        verifyThatTheLinkedListIsEmpty(head);
+        HeroNode cur = head;
+        Stack<HeroNode> reverseHeroNode = new Stack<>();
+        while (cur != null) {
+            reverseHeroNode.push(cur);
+            //后移
+            cur = cur.getNextNode();
         }
-        HeroNode temp = singleLinkedList.getHead().getNextNode();
-        //fixme:使用递归产生，压栈和出栈的效果，从而达到反转的目的  -- Bill-liu BuiltIn 2020/2/19 2:29
-        HeroNode reverseHead = reverse(singleLinkedList);
-        temp.setNextNode(reverseHead.getNextNode());
-        singleLinkedList.getHead().setNextNode(null);
-        return reverseHead;
+        HeroNode reversed = new HeroNode(0,"","");
+        //    出栈
+        //对于最后一个节点进行特殊处理，最后一个节点在循环过程中，会报空指针异常
+        //也就是反转前的最后一个元素，因为它位于最后，不需要反转，如果它参与下面的while， 因为它的下一个节点为空，如果getNode()， 那么为空指针异常
+        if (!reverseHeroNode.isEmpty()) {
+            reversed=reverseHeroNode.pop();
+        }
+
+        while (!reverseHeroNode.isEmpty()) {
+            // 头节点的下一个永远作为第一个节点,开始反转
+            HeroNode temp = reverseHeroNode.pop();
+            temp.getNextNode().setNextNode(temp);
+            temp.setNextNode(null);
+        }
+        return reversed;
     }
-
-
 
 
     private void verifyIndexValidity(int index, int length) {
@@ -292,6 +305,7 @@ public class SingleLinkedList {
         }
 
     }
+
     private void verifyThatTheLinkedListIsEmpty() {
         if (isEmpty()) {
             System.out.println("链表为空！");

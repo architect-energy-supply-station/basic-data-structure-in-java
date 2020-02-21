@@ -9,7 +9,42 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 public class HeroNode  {
     private Integer number;
+    private static boolean isEmpty(HeroNode heroNode) {
 
+        return heroNode.getNextNode() == null;
+    }
+
+    //打印倒序后的链表
+    public static void display(HeroNode head) {
+        if (isEmpty(head)) {
+            System.out.println("链表为空!");
+        }
+        //输出所有除头节点之外的节点信息，需要遍历链表
+        HeroNode temp = head;
+        while (true) {
+            if (temp.getNextNode() == null) {
+                break;
+            }
+            System.out.println(temp);
+            temp = temp.getNextNode();
+        }
+
+    }
+    public void display() {
+        if (isEmpty(this)) {
+            System.out.println("链表为空!");
+        }
+        //输出所有除头节点之外的节点信息，需要遍历链表
+        HeroNode temp = this;
+        while (true) {
+            if (temp.getNextNode() == null) {
+                break;
+            }
+            System.out.println(temp);
+            temp = temp.getNextNode();
+        }
+
+    }
 
     public String getNickName() {
         return nickName;
