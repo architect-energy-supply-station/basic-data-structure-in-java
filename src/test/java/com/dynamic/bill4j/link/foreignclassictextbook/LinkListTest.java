@@ -65,4 +65,56 @@ class LinkListTest {
         linkList.displayList();
     }
 
+    @Test
+    void indexOf() {
+        linkList.displayList();
+        assertEquals(null, linkList.indexOf(3));
+        linkList.insertFirst(link1);
+        linkList.insertFirst(link2);
+        linkList.insertFirst(link3);
+        linkList.insertFirst(link4);
+        linkList.insertFirst(link5);
+        linkList.displayList();
+        assertEquals(null, linkList.indexOf(0));
+        assertEquals(link3, linkList.indexOf(3));
+    }
+
+    @Test
+    void remove() {
+        linkList.displayList();
+        assertEquals(null, linkList.remove(0));
+        linkList.insertFirst(link1);
+        linkList.insertFirst(link2);
+        linkList.insertFirst(link3);
+        linkList.insertFirst(link4);
+        linkList.insertFirst(link5);
+        linkList.displayList();
+        assertEquals(null, linkList.remove(0));
+        assertEquals(link3, linkList.remove(3));
+        linkList.displayList();
+        assertEquals(link5, linkList.remove(5));
+        linkList.displayList();
+        assertEquals(link1, linkList.remove(1));
+        linkList.displayList();
+
+    }@Test
+    void remove3() {
+        linkList.displayList();
+        assertEquals(null, linkList.remove3(0));
+        linkList.insertFirst(link1);
+        linkList.insertFirst(link2);
+        linkList.insertFirst(link3);
+        linkList.insertFirst(link4);
+        linkList.insertFirst(link5);
+        linkList.displayList();
+        assertEquals(null, linkList.remove3(0));
+        assertEquals(link3, linkList.remove3(3));
+        linkList.displayList();
+        assertEquals(link5, linkList.remove3(5));
+        linkList.displayList();
+        assertEquals(link1, linkList.remove3(1));
+        linkList.displayList();
+
+    }
+
 }

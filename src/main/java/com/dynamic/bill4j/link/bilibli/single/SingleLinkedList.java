@@ -170,6 +170,7 @@ public class SingleLinkedList {
         }
         return temp;
     }
+
     public HeroNode nodeOfLastIndexOf2(HeroNode head, int index) {
         HeroNode cur = head;
         if (cur.getNextNode() == null) {
