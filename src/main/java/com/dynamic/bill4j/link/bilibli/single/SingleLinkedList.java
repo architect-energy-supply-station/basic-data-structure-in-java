@@ -47,14 +47,13 @@ public class SingleLinkedList {
     }
 
     public void addToFirstNodeAlways(HeroNode heroNode)  {
-        HeroNode newHeroNode = heroNode;
         HeroNode cur = this.head;
         //头节点的下一个永远作为第一个节点
         if (cur.getNextNode() == null) {
-            cur.setNextNode(newHeroNode);
+            cur.setNextNode(heroNode);
         } else {
-            newHeroNode.setNextNode(cur.getNextNode());
-            cur.setNextNode(newHeroNode);
+            heroNode.setNextNode(cur.getNextNode());
+            cur.setNextNode(heroNode);
         }
         count++;
     }
