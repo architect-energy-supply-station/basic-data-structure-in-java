@@ -1,4 +1,4 @@
-package com.dynamic.bill4j.link.bilibli.single;
+package com.dynamic.bill4j.link.bilibli.doublycircular;
 
 import java.util.concurrent.atomic.LongAdder;
 

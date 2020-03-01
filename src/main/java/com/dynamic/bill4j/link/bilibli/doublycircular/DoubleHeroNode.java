@@ -1,4 +1,4 @@
-package com.dynamic.bill4j.link.bilibli.single;
+package com.dynamic.bill4j.link.bilibli.doublycircular;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
